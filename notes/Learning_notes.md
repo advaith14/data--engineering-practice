@@ -38,3 +38,19 @@ What I did despite fear:
 - showed up
 - learned something new
 - didn’t quit
+
+12/13
+Snowflake Intelligence SI is used to answer complex questions to all the data in Snowflake -Deep Analysis Quick Actions - It goes beyond the what of the data to the why and takes in natural language and returns meaningful insights. -Verified Trusted Answers - You can trace a response back to the source -Enterprise Ready- Scalable SI and is within the perimeter of snowflake and is governed by the same security policies (**Snowflake Intelligence is an enterprise AI layer that enables governed, explainable, natural-language insights across all data (structured + unstructured) stored in Snowflake.**)
+
+Agents return Insights based on the Retrievals (the better the context the stronger the insight) using a Large Language Model (LLM) 
+
+Cortex Analyst is used to query structured data in Snowflake. A yaml file is used to provide sematic views that bridge the gap between business logic and actual snowflake table and columns. One can give alternate column names, sample values and even relationships between the said tables. **(Cortex Analyst converts natural-language questions into trusted SQL, using a semantic model (YAML) that defines metrics, dimensions, relationships, synonyms, and business logic**.)
+
+Cortex Search is used to search and retrieve information from unstructured text data like slack messages and pdfs. It converts the data into chunks which in turn allow the agent to perform Retrieval Augmented Generation (RAG) 
+
+Agent is used to answer questions (never just answer questions) or perform tasks for the users. It uses tools like Cortex analyst and cortex search and can have orchestration logic to perform actions like getting insights and sending out an email
+
+**Cortex Agent is an orchestration layer that performs tasks for users by coordinating multiple tools.**
+It can call Cortex Analyst to query structured data, Cortex Search to retrieve context from unstructured documents using RAG, and execute SQL or other actions.
+Analyst itself is not an agent — it is one of the tools an agent can invoke to translate natural language into governed SQL.
+In our POC, Cortex Search was used to retrieve insights from unstructured PDFs, which the agent could then incorporate into responses.
