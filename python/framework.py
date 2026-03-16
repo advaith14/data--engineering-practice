@@ -30,17 +30,48 @@ from time import sleep
 from pyspark.sql import functions as F
 import pandas as pd
 import hashlib
-from azure.storage.blob import BlobServiceClient
-from simple_salesforce import Salesforce, SalesforceLogin, format_external_id
-import snowflake.connector
-from delta.tables import *
-from databricks import sql
-import boto3
-import splunklib
-import splunklib.client as client
-import splunklib.results as results
 import xml.etree.ElementTree as ET
 from pyspark.context import SparkContext
+
+# Cloud/platform-specific imports — wrapped in try/except so the module can be
+# imported locally without these dependencies installed. Functions that rely on
+# these will raise an ImportError at call-time if the package is missing.
+try:
+    from azure.storage.blob import BlobServiceClient
+except ImportError:
+    BlobServiceClient = None
+
+try:
+    from simple_salesforce import Salesforce, SalesforceLogin, format_external_id
+except ImportError:
+    Salesforce = SalesforceLogin = format_external_id = None
+
+try:
+    import snowflake.connector
+except ImportError:
+    snowflake = None
+
+try:
+    from delta.tables import *
+except ImportError:
+    pass
+
+try:
+    from databricks import sql
+except ImportError:
+    sql = None
+
+try:
+    import boto3
+except ImportError:
+    boto3 = None
+
+try:
+    import splunklib
+    import splunklib.client as client
+    import splunklib.results as results
+except ImportError:
+    splunklib = client = results = None
 
 # COMMAND ----------
 
@@ -1266,7 +1297,7 @@ def onprem_connection(on_prem_name, jdbcDatabase):
             jdbcPort = "50002"
         else:
             raise TypeError("Please Enter a valid Environment.")
-    elelif(on_prem_name == 'REPORTING_DB'):
+    elif(on_prem_name == 'REPORTING_DB'):
         #Secrets for RED on-prem connection
         try:
             red_account = dbutils.secrets.get("secret-scope", "red-account")
