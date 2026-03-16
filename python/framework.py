@@ -1266,7 +1266,7 @@ def onprem_connection(on_prem_name, jdbcDatabase):
             jdbcPort = "50002"
         else:
             raise TypeError("Please Enter a valid Environment.")
-    elelif(on_prem_name == 'REPORTING_DB'):
+    elif(on_prem_name == 'REPORTING_DB'):
         #Secrets for RED on-prem connection
         try:
             red_account = dbutils.secrets.get("secret-scope", "red-account")
