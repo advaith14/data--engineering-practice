@@ -4,7 +4,6 @@
 
 Build a working real estate portfolio analytics demo using **Cortex Analyst** and **Snowflake Intelligence** that lets non-technical stakeholders ask questions about property transactions, agent performance, and market trends in plain English.
 
-**Time:** ~60 minutes
 **Deliverables:**
 - Real estate demo database with realistic property, agent, and transaction data
 - Semantic view for Cortex Analyst
@@ -28,7 +27,7 @@ Your job: build a proof-of-concept that demonstrates Cortex Analyst answering re
 - Active Snowflake account (trial or enterprise)
 - SYSADMIN or equivalent role with CREATE DATABASE privileges
 - Snowflake Worksheet or compatible SQL editor
-- `setup.sql` from this folder
+- `setup.sql` (in the same folder as this file)
 
 ---
 
@@ -43,13 +42,13 @@ Open `setup.sql` and find-replace `_ABC` with your own initials before running a
 | Ravi Kumar | `_RK` |
 | Mike Chen | `_MC` |
 
-This gives you your own isolated database (`REAL_ESTATE_ANALYTICS_JS`, etc.) so your objects don't conflict with others in a shared account.
+This gives you your own isolated database (`REAL_ESTATE_ANALYTICS_JS`, etc.) so your objects don't conflict with anyone else on the same account.
 
 > **Quick replace:** `Ctrl+H` → Find: `_ABC` → Replace: `_XX`
 
 ---
 
-## Task 1: Review the Business Context (5 min)
+## Task 1: Review the Business Context
 
 Before building, understand what the business actually needs.
 
@@ -74,7 +73,7 @@ Write down two or three additional questions *you* would ask as a property analy
 
 ---
 
-## Task 2: Build the Database (20 min)
+## Task 2: Build the Database
 
 ### Step 1: Run the setup script
 
@@ -128,7 +127,7 @@ GROUP BY 1 ORDER BY 3 DESC;
 
 ---
 
-## Task 3: Create the Semantic View (15 min)
+## Task 3: Create the Semantic View
 
 The semantic view is what teaches Cortex Analyst how to query your data. It defines:
 - **Tables** — what's available and how they relate
@@ -159,7 +158,7 @@ This mapping is what lets Cortex Analyst translate natural language → SQL with
 
 ---
 
-## Task 4: Set Up Cortex Analyst (15 min)
+## Task 4: Set Up Cortex Analyst
 
 ### Step 1: Open Cortex Analyst in the Snowflake UI
 
@@ -201,7 +200,7 @@ Try the 2–3 questions you wrote down in Task 1. Note:
 
 ---
 
-## Task 5: Iterate on the Semantic View (optional, 5 min)
+## Task 5: Iterate on the Semantic View
 
 If Cortex Analyst misinterpreted any of your questions, improve the semantic view.
 
